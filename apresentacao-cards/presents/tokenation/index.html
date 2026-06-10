@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenation 26 - A Evolução do Mercado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background: #222222;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(204, 9, 47, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(204, 9, 47, 0.3);
+        }
+
+        .primary-color {
+            color: #cc092f;
+        }
+
+        .primary-bg {
+            background: #cc092f;
+        }
+
+        .icon-container {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(204, 9, 47, 0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #cc092f, #ff1a40, #cc092f);
+            background-size: 200% 100%;
+            animation: shimmer 2s linear infinite;
+            z-index: 9999;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(204, 9, 47, 0.5);
+        }
+
+        #next-card {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(204, 9, 47, 0.9);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 9998;
+            box-shadow: 0 4px 20px rgba(204, 9, 47, 0.4);
+            border: none;
+        }
+
+        #next-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #next-card:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(204, 9, 47, 0.6);
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+
+    <div id="reading-progress" style="width: 0%;"></div>
+    <button id="next-card" aria-label="Próximo card">
+        <i data-lucide="chevron-down" class="w-6 h-6" id="next-card-icon"></i>
+    </button>
+
+    <!-- HEADER / Slide 1 -->
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden"
+        style="background: linear-gradient(-45deg, #1a1a1a, #2d2d2d, #2d0d12, #1a1a1a); background-size: 400% 400%; animation: gradientShift 15s ease infinite;">
+        <div class="absolute inset-0 pointer-events-none"
+            style="background-image: radial-gradient(circle at 20% 80%, rgba(204, 9, 47, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(204, 9, 47, 0.1) 0%, transparent 50%);">
+        </div>
+        <div class="text-center relative z-10" data-aos="fade-down">
+            <span class="inline-block bg-[#cc092f] text-white text-sm font-bold px-4 py-2 rounded-full mb-6">TOKENATION 26</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">O Fim do Hype</h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto mb-8 font-light leading-relaxed">
+                Um mergulho profundo no amadurecimento dos Digital Assets, a evolução para os Agentes de IA e o papel definitivo do fator humano.
+            </p>
+        </div>
+
+        <button class="absolute bottom-8 right-8 flex flex-col items-center gap-2 cursor-pointer bg-transparent border-none group"
+            id="header-next-btn" aria-label="Ir para o primeiro card"
+            style="animation: scroll-bounce 2s ease-in-out infinite;">
+            <span class="text-[10px] uppercase tracking-[4px] text-white/30 font-medium group-hover:text-[#cc092f] transition-colors">Iniciar</span>
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#cc092f]/20 transition-all">
+                <i data-lucide="chevron-down" class="w-5 h-5 text-white/40 group-hover:text-[#cc092f] transition-colors"></i>
+            </div>
+        </button>
+    </header>
+
+    <main class="container mx-auto px-4 py-20 flex flex-col items-center gap-[60vh]">
+        
+        <!-- Slide 2: O Panorama (Destaques) -->
+        <div class="w-full max-w-5xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center">
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="bar-chart-2" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">Digital Assets</h4>
+                    <p class="text-white/60 text-sm mb-6">A tecnologia blockchain provou seu valor corporativo.</p>
+                    <div class="text-3xl font-black mb-6">Maturidade</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Foco em problemas reais</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Liquidez global garantida</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-[#cc092f] relative transform scale-105 z-10 shadow-2xl">
+                    <div class="absolute -top-3 bg-[#cc092f] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">O Cenário</div>
+                    <i data-lucide="compass" class="w-10 h-10 mb-4 primary-color"></i>
+                    <h4 class="text-xl font-bold mb-2">O Fim do Hype</h4>
+                    <p class="text-white/60 text-sm mb-6">Menos promessas vazias, mais infraestrutura de ponta e execução.</p>
+                    <div class="text-3xl font-black primary-color mb-6">Realidade</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Soluções escaláveis</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Regulação impulsionando o mercado</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="git-merge" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">Convergência</h4>
+                    <p class="text-white/60 text-sm mb-6">IA, Web3 e finanças tradicionais se encontrando.</p>
+                    <div class="text-3xl font-black mb-6">Integração</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Finanças programáveis</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Agentes autônomos operacionais</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: O Mercado Digerido (Grid) -->
+        <div class="glass-card rounded-xl p-8 w-full max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center mb-8">
+                <div class="icon-container"><i data-lucide="book-open" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-2xl font-bold">O Mercado Digerido</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="rounded-lg p-6 bg-white/5" data-aos="zoom-in">
+                    <div class="text-2xl font-black primary-color mb-3">Fase Experimental Superada</div>
+                    <p class="text-white/90 text-base leading-relaxed">As discussões no Tokenation 26 provaram que a infraestrutura financeira baseada em blockchain está pronta para o horário nobre. As provas de conceito (PoCs) ficaram no passado; a era da implementação massiva começou.</p>
+                </div>
+                <div class="rounded-lg p-6 bg-white/5" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-2xl font-black primary-color mb-3">O Foco na Eficiência</div>
+                    <p class="text-white/90 text-base leading-relaxed">O mercado deixou de discutir "o que é" a tecnologia para focar puramente em "como ela reduz custos e aumenta a velocidade". A adoção corporativa não questiona mais o blockchain, ela o utiliza como ferramenta estrutural.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: A Era das Stablecoins (Lista) -->
+        <div class="glass-card rounded-xl p-8 w-full max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-6">
+                <div class="icon-container"><i data-lucide="coins" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-3xl font-bold text-white">A Era das Stablecoins</h3>
+            </div>
+            <ul class="space-y-8">
+                <li class="flex items-start">
+                    <span class="text-4xl font-black primary-color mr-6">01</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">Consolidação Definitiva</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">As stablecoins não são mais apenas uma ponte para o ecossistema cripto; elas se tornaram a principal via expressa para transferências globais e pagamentos corporativos, garantindo liquidez sem volatilidade.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-4xl font-black primary-color mr-6">02</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">Revolução no Câmbio</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">Operações internacionais que antes dependiam de múltiplos intermediários, spread cambial abusivo e dias de liquidação agora acontecem em frações de segundos, com custos negligenciáveis.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-4xl font-black primary-color mr-6">03</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">Operações Interbancárias</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">Instituições financeiras já utilizam o padrão de stablecoins para liquidação interbancária em tempo real 24/7, quebrando as barreiras de horário e fronteira do sistema financeiro tradicional.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Slide 5: Progresso Stablecoins -->
+        <div class="glass-card rounded-xl p-8 w-full max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-4">
+                <div class="icon-container"><i data-lucide="activity" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-2xl font-bold">Confiança do Mercado</h3>
+            </div>
+            <div class="space-y-6 mt-8">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold text-lg">Adoção Institucional de Stablecoins para Remessas</span>
+                        <span class="primary-color font-bold text-xl">85%</span>
+                    </div>
+                    <div class="w-full h-4 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full primary-bg progress-bar-fill relative"
+                            style="width: 0%; transition: width 2s ease-out;" data-width="85">
+                            <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-white/50 mt-3 text-right">Métrica representativa de discussões corporativas recentes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: O Avanço dos RWA (Timeline) -->
+        <div class="glass-card rounded-xl p-8 w-full max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-8">
+                <div class="icon-container"><i data-lucide="building" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-3xl font-bold">A Revolução dos Ativos Reais (RWA)</h3>
+            </div>
+
+            <div class="space-y-10 relative mt-10">
+                <div class="absolute left-[23px] top-4 bottom-4 w-1 bg-white/10"></div>
+
+                <div class="relative pl-16" data-aos="fade-right">
+                    <div class="absolute left-0 top-1 w-12 h-12 rounded-full primary-bg flex items-center justify-center border-4 border-[#222222] shadow-lg shadow-red-500/20">
+                        <span class="text-white font-black text-lg">1</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-2">A Fundação Tecnológica</h4>
+                    <p class="text-white/80 text-lg leading-relaxed">
+                        A infraestrutura necessária para tokenizar imóveis, títulos da dívida pública, commodities e recebíveis já está plenamente desenvolvida e massivamente testada. A tecnologia necessária para garantir o poder da divisibilidade e liquidez fracionada deixou de ser um gargalo técnico.
+                    </p>
+                </div>
+
+                <div class="relative pl-16" data-aos="fade-right" data-aos-delay="200">
+                    <div class="absolute left-0 top-1 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center border-4 border-[#222222]">
+                        <span class="text-white font-black text-lg">2</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-2">A Barreira da Confiança</h4>
+                    <p class="text-white/80 text-lg leading-relaxed">
+                        Hoje, a tokenização (RWA) é uma certeza no médio prazo. O risco e a lentidão atual estão completamente subdimensionados na "psicologia" do mercado: ainda existe uma desconfiança corporativa para adoção de larga escala. O desafio atual é a gestão de mudança, não a plataforma técnica.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Regulação (Destaques) -->
+        <div class="w-full max-w-5xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center">
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="scale" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">Cenário Global</h4>
+                    <p class="text-white/60 text-sm mb-6">Aprovação de legislações estruturantes e marcos legais.</p>
+                    <div class="text-3xl font-black mb-6">Avanço</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Movimentos de clareza nos EUA</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Diretrizes claras na Europa</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-[#cc092f] relative transform scale-105 z-10 shadow-2xl">
+                    <div class="absolute -top-3 bg-[#cc092f] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">O Catalisador</div>
+                    <i data-lucide="shield-check" class="w-10 h-10 mb-4 primary-color"></i>
+                    <h4 class="text-xl font-bold mb-2">Regras do Jogo</h4>
+                    <p class="text-white/60 text-sm mb-6">A regulação não está atuando como freio, mas como motor.</p>
+                    <div class="text-3xl font-black primary-color mb-6">Segurança</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Atrai dinheiro institucional</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Mitiga riscos sistêmicos</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="file-text" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">O Brasil</h4>
+                    <p class="text-white/60 text-sm mb-6">Posicionamento de vanguarda com BC e CVM.</p>
+                    <div class="text-3xl font-black mb-6">Destaque</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Sandbox Regulatório ágil</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Banco Central ativo na inovação</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: O Tabuleiro Regulatório (Grid) -->
+        <div class="glass-card rounded-xl p-8 w-full max-w-4xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center mb-8">
+                <div class="icon-container"><i data-lucide="landmark" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-3xl font-bold">O Novo Tabuleiro Regulatório</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-xl p-8 bg-white/5 border-l-4 border-[#cc092f]" data-aos="zoom-in">
+                    <div class="text-3xl font-black primary-color mb-4">Bancos Tradicionais</div>
+                    <p class="text-white/90 text-lg leading-relaxed mb-4">A regulação atual tem favorecido substancialmente os grandes players financeiros. Por já possuírem infraestrutura robusta de compliance e KYC (Know Your Customer), os bancos estão se adaptando em tempo recorde.</p>
+                    <p class="text-white/70 text-md">Eles estão prontos para operar e dominar a custódia, transacionando ativos digitais com o selo de segurança que o cliente tradicional exige.</p>
+                </div>
+                <div class="rounded-xl p-8 bg-white/5 border-l-4 border-white/20" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-3xl font-black text-white mb-4">Exchanges de Cripto</div>
+                    <p class="text-white/90 text-lg leading-relaxed mb-4">O modelo simples de "corretagem de criptomoedas" está altamente ameaçado pelos bancos entrantes. As exchanges enfrentarão uma fuga de capital para instituições tradicionais caso não inovem.</p>
+                    <p class="text-white/70 text-md">A única saída é a **reinvenção profunda**: mergulhar no ecossistema DeFi, oferecendo produtos estruturados de finanças descentralizadas, staking avançado e serviços que os bancos ainda vão demorar anos para internalizar.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: A Era dos Agentes (Lista) -->
+        <div class="glass-card rounded-xl p-10 w-full max-w-4xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-10">
+                <div class="icon-container"><i data-lucide="bot" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-4xl font-bold text-white">IA: De Analytics para Agentes</h3>
+            </div>
+            <ul class="space-y-10">
+                <li class="flex items-start">
+                    <span class="text-5xl font-black primary-color mr-6 opacity-80">01</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-white mb-2">O Fim da Automação Pura</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">Historicamente, a IA corporativa focava em analisar dados estáticos (dashboards e predições numéricas) ou realizar RPA (automação via clique-tela). Esse modelo resolve problemas antigos, mas atingiu um platô de inovação estrutural.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-5xl font-black primary-color mr-6 opacity-80">02</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-white mb-2">A IA Ganha "Corpo" e Autonomia</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">A grande virada atual é que a IA não é mais apenas um cérebro confinado a um chat. Ela agora possui "corpo" (ferramentas e integrações via API) para acessar sistemas, tomar decisões baseadas em regras de negócio contextuais e executar as ações finais sem intervenção humana.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-5xl font-black primary-color mr-6 opacity-80">03</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-white mb-2">O Surgimento dos Agentes</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">Frameworks e orquestradores (como Openclaw, Harness, etc) estão criando redes onde múltiplos Agentes de IA conversam entre si, dividem tarefas complexas, leem bases vetoriais de contexto e gerenciam o fluxo de trabalho de departamentos inteiros.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Slide 10: O Paradigma dos Agentes (Timeline) -->
+        <div class="glass-card rounded-xl p-10 w-full max-w-3xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-10">
+                <div class="icon-container"><i data-lucide="workflow" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-3xl font-bold">Como os Agentes Pensam</h3>
+            </div>
+
+            <div class="space-y-12 relative mt-4">
+                <div class="absolute left-[23px] top-4 bottom-4 w-1 bg-white/10"></div>
+
+                <div class="relative pl-16" data-aos="fade-right">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full primary-bg flex items-center justify-center border-4 border-[#222222]">
+                        <i data-lucide="database" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">Contexto Vetorial</h4>
+                    <p class="text-white/80 text-lg leading-relaxed">A IA abandona as dependências estritas do banco de dados relacional clássico. Em vez disso, utiliza Bancos de Dados Vetoriais para entender o sentido semântico e o contexto completo de manuais, diretrizes, e históricos conversacionais da empresa.</p>
+                </div>
+
+                <div class="relative pl-16" data-aos="fade-right" data-aos-delay="200">
+                    <div class="absolute left-0 top-0 w-12 h-12 rounded-full bg-white/20 flex items-center justify-center border-4 border-[#222222]">
+                        <i data-lucide="play" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3">O Gatilho Baseado em Evento</h4>
+                    <p class="text-white/80 text-lg leading-relaxed">A interação do usuário muda. O Agente não precisa de um botão "Enviar". Ele fica de prontidão escutando e-mails, tickets do Jira, menções no Telegram ou alertas de sistema, iniciando sua análise proativamente assim que algo acontece.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: O Choque do Tokenomics (Grid) -->
+        <div class="glass-card rounded-xl p-8 w-full max-w-4xl" data-aos="fade-up" data-aos-delay="200">
+            <div class="flex items-center mb-8">
+                <div class="icon-container"><i data-lucide="cpu" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-3xl font-bold">O Choque do Tokenomics</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-xl p-8 bg-[#cc092f]/10 border border-[#cc092f]/30" data-aos="zoom-in">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="alert-triangle" class="w-8 h-8 primary-color"></i>
+                        <div class="text-2xl font-black text-white">A Conta da Nuvem</div>
+                    </div>
+                    <p class="text-white/90 text-lg leading-relaxed">Ter múltiplos Agentes de IA raciocinando em APIs fechadas gera uma conta colossal de "Tokens". O uso intensivo e descontrolado da nuvem pública para IA generativa tornou-se insustentável para a margem de lucro operacional da maioria das empresas.</p>
+                </div>
+                <div class="rounded-xl p-8 bg-white/5 border border-white/10" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i data-lucide="target" class="w-8 h-8 text-white/70"></i>
+                        <div class="text-2xl font-black text-white">Gestão de Sobrevivência</div>
+                    </div>
+                    <p class="text-white/90 text-lg leading-relaxed">O "Tokenomics" da IA virou pauta central no C-Level. Assim como controlamos orçamento financeiro, agora é necessário ter observabilidade rigorosa e limitar a quantidade de tokens consumidos por processo. Sem controle, a inovação traz prejuízo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: A Virada para o Local (Destaques) -->
+        <div class="w-full max-w-5xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center">
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="server" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">Processamento Local</h4>
+                    <p class="text-white/60 text-sm mb-6">Fuga estratégica dos custos excessivos da nuvem (Cloud).</p>
+                    <div class="text-3xl font-black mb-6">Economia</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Modelos Open-Source (Llama, etc)</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Previsibilidade de Gastos</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-[#cc092f] relative transform scale-105 z-10 shadow-2xl">
+                    <div class="absolute -top-3 bg-[#cc092f] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">O Case Brasileiro</div>
+                    <i data-lucide="cpu" class="w-10 h-10 mb-4 primary-color"></i>
+                    <h4 class="text-xl font-bold mb-2">O Case Mac Mini</h4>
+                    <p class="text-white/60 text-sm mb-6">A revolução da arquitetura ARM para Inferência de IA local.</p>
+                    <div class="text-3xl font-black primary-color mb-6">Cluster On-Premise</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Clusters montados no Brasil</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Processamento rápido com custo marginal zero de API</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="cloud" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">Infra Híbrida</h4>
+                    <p class="text-white/60 text-sm mb-6">O equilíbrio perfeito entre processamento em nuvem e físico.</p>
+                    <div class="text-3xl font-black mb-6">Equilíbrio</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Nuvem para pico e conveniência</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> On-premise para volume massivo e rotineiro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: O Pêndulo da Segurança (Lista) -->
+        <div class="glass-card rounded-xl p-10 w-full max-w-4xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-10">
+                <div class="icon-container"><i data-lucide="shield-alert" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-4xl font-bold text-white">O Pêndulo da Segurança</h3>
+            </div>
+            <ul class="space-y-10">
+                <li class="flex items-start">
+                    <span class="text-5xl font-black primary-color mr-6 opacity-80">01</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-white mb-2">A Corrida da Adoção Extrema</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">Quando a IA generativa explodiu, o mercado focou unicamente em usabilidade. O pêndulo estava no extremo da adoção rápida, ignorando governança, exposição de dados sensíveis e acessos indevidos.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-5xl font-black primary-color mr-6 opacity-80">02</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-white mb-2">O Retorno do Pêndulo</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">Agora, a maré está voltando. O movimento é forte em direção à correção: revisão profunda de acessos, auditoria rigorosa de agentes autônomos e priorização do processamento interno (local) para garantir a segurança dos dados corporativos.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-5xl font-black primary-color mr-6 opacity-80">03</span>
+                    <div>
+                        <h4 class="text-2xl font-bold text-white mb-2">O Elo Mais Frágil</h4>
+                        <p class="text-white/80 text-lg leading-relaxed">Por mais robustos que sejam os firewalls e as LLMs instaladas localmente, a segurança cibernética continuará esbarrando na mesma falha: o ser humano, a engenharia social e a incompreensão das vulnerabilidades no manuseio de prompts.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Slide 14: O Futuro do Profissional (Grid) -->
+        <div class="glass-card rounded-xl p-10 w-full max-w-4xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-center mb-8">
+                <div class="icon-container"><i data-lucide="users" class="primary-color"></i></div>
+                <div class="w-10 h-1 primary-bg ml-4 mr-4"></div>
+                <h3 class="text-3xl font-bold">A IA Vai Roubar Seu Emprego?</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                <div class="rounded-xl p-8 bg-white/5 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-[#cc092f]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="text-6xl text-white/10 font-black absolute -top-4 -right-4">NO</div>
+                    <h4 class="text-2xl font-black primary-color mb-4 relative z-10">A Resposta Curta</h4>
+                    <p class="text-white/90 text-lg leading-relaxed relative z-10">
+                        Não. A inteligência artificial, mesmo nos modelos de agentes mais autônomos, carece da intuição orgânica humana. As máquinas são programadas para otimizar métricas conhecidas, mas falham drasticamente ao precisar de contexto emocional ou interpretação de cenários não documentados.
+                    </p>
+                </div>
+                <div class="rounded-xl p-8 bg-white/5 relative overflow-hidden group border-l-4 border-[#cc092f]">
+                    <div class="absolute inset-0 bg-[#cc092f]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="text-6xl text-white/10 font-black absolute -top-4 -right-4">YES</div>
+                    <h4 class="text-2xl font-black text-white mb-4 relative z-10">A Resposta Real</h4>
+                    <p class="text-white/90 text-lg leading-relaxed relative z-10">
+                        Um profissional que domina o uso da IA, sabe construir os melhores prompts, orquestra seus próprios agentes e automatiza sua própria rotina, produzirá o equivalente a uma equipe inteira. É este profissional hiper-produtivo que vai ocupar os espaços e as vagas do mercado.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: As Skills Humanas (Destaques) -->
+        <div class="w-full max-w-5xl" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center">
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="heart" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">Empatia</h4>
+                    <p class="text-white/60 text-sm mb-6">A inteligência emocional é irreplicável no código.</p>
+                    <div class="text-3xl font-black mb-6">Conexão</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Entender dores reais do cliente</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Liderança humana de equipes</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-[#cc092f] relative transform scale-105 z-10 shadow-2xl">
+                    <div class="absolute -top-3 bg-[#cc092f] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">O Diferencial</div>
+                    <i data-lucide="lightbulb" class="w-10 h-10 mb-4 primary-color"></i>
+                    <h4 class="text-xl font-bold mb-2">Criatividade</h4>
+                    <p class="text-white/60 text-sm mb-6">Inovação nasce de erros felizes e associações abstratas.</p>
+                    <div class="text-3xl font-black primary-color mb-6">Visão</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Conectar peças desconexas</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Criar o "Zero to One"</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center border-t-4 border-t-white/20">
+                    <i data-lucide="compass" class="w-10 h-10 mb-4 text-white/70"></i>
+                    <h4 class="text-xl font-bold mb-2">Intuição</h4>
+                    <p class="text-white/60 text-sm mb-6">A bússola moral e instintiva em momentos caóticos.</p>
+                    <div class="text-3xl font-black mb-6">Decisão</div>
+                    <ul class="text-left text-sm text-white/80 space-y-3 mb-8 w-full">
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Navegar por alto nível de incerteza</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 primary-color mt-1"></i> Tomar riscos calculados sem métrica prévia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Conclusão / Citação -->
+        <div class="glass-card rounded-xl p-12 w-full max-w-4xl text-center relative" data-aos="fade-up" data-aos-delay="200">
+            <div class="absolute top-6 left-8 text-8xl font-serif primary-color opacity-20">“</div>
+
+            <blockquote class="relative z-10 px-8 py-4">
+                <p class="text-3xl italic text-white/90 leading-tight mb-10 font-light">
+                    O que nos diferencia das máquinas continua sendo a nossa <strong class="primary-color font-bold">empatia</strong>, <strong class="primary-color font-bold">criatividade</strong> e <strong class="primary-color font-bold">intuição</strong> para conectar as peças. A tecnologia é o motor, mas o ser humano é a bússola que dá o direcionamento real.
+                </p>
+                <cite class="not-italic block mt-8">
+                    <div class="w-16 h-1 primary-bg mx-auto mb-6"></div>
+                    <span class="block text-white font-bold text-xl uppercase tracking-widest">Denis</span>
+                    <span class="block text-white/60 text-md mt-2">Reflexões do Tokenation 26</span>
+                </cite>
+            </blockquote>
+        </div>
+
+    </main>
+    <footer class="py-12 text-center text-white/60 mt-20">
+        <p class="text-sm uppercase tracking-widest">&copy; 2026 - Insights Tokenation 26 | Design Corporativo</p>
+    </footer>
+
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+        lucide.createIcons();
+
+        const cardSections = [];
+
+        function buildCardSections() {
+            cardSections.length = 0;
+            const wrappers = document.querySelectorAll('.fullscreen-wrapper');
+            if (wrappers.length > 0) {
+                wrappers.forEach(el => cardSections.push(el));
+            } else {
+                document.querySelectorAll('main > .glass-card, main > div:not(.glass-card)').forEach(el => cardSections.push(el));
+            }
+        }
+
+        function getCurrentSectionIndex() {
+            const scrollTop = window.scrollY + window.innerHeight * 0.3;
+            let idx = -1;
+            for (let i = 0; i < cardSections.length; i++) {
+                if (cardSections[i].offsetTop <= scrollTop) {
+                    idx = i;
+                }
+            }
+            return idx;
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('reading-progress').style.width = progress + '%';
+
+            const btn = document.getElementById('next-card');
+            if (scrollTop > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+
+            const icon = document.getElementById('next-card-icon');
+            const atBottom = (scrollTop + window.innerHeight) >= (document.documentElement.scrollHeight - 100);
+            if (atBottom) {
+                icon.setAttribute('data-lucide', 'chevron-up');
+            } else {
+                icon.setAttribute('data-lucide', 'chevron-down');
+            }
+            lucide.createIcons();
+        });
+
+        document.getElementById('next-card').addEventListener('click', () => {
+            const atBottom = (window.scrollY + window.innerHeight) >= (document.documentElement.scrollHeight - 100);
+            if (atBottom) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            const idx = getCurrentSectionIndex();
+            const nextIdx = idx + 1;
+            if (nextIdx < cardSections.length) {
+                cardSections[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+
+        function animateProgressBars() {
+            document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            setTimeout(() => { bar.style.width = bar.getAttribute('data-width') + '%'; }, 200);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                observer.observe(bar);
+            });
+        }
+
+        function setupFullScreenWrappers() {
+            const main = document.querySelector('main');
+            if (!main) return;
+
+            main.classList.remove('gap-[60vh]', 'py-20');
+            main.style.paddingTop = '';
+
+            const children = Array.from(main.children);
+            children.forEach(child => {
+                if (child.tagName === 'DIV' && !child.classList.contains('fullscreen-wrapper')) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'min-h-screen w-full flex items-center justify-center fullscreen-wrapper snap-start p-4';
+                    child.parentNode.insertBefore(wrapper, child);
+                    wrapper.appendChild(child);
+                }
+            });
+
+            buildCardSections();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupFullScreenWrappers();
+            setTimeout(animateProgressBars, 600);
+
+            const headerBtn = document.getElementById('header-next-btn');
+            if (headerBtn) {
+                headerBtn.addEventListener('click', () => {
+                    if (cardSections.length > 0) {
+                        cardSections[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                const idx = getCurrentSectionIndex();
+
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') {
+                    e.preventDefault();
+                    const nextIdx = idx + 1;
+                    if (nextIdx < cardSections.length) {
+                        cardSections[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+                    e.preventDefault();
+                    const prevIdx = idx - 1;
+                    if (prevIdx >= 0) {
+                        cardSections[prevIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    } else if (idx === 0 || idx === -1) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                }
+            });
+
+            window.addEventListener('resize', setupFullScreenWrappers);
+        });
+    </script>
+</body>
+
+</html>
