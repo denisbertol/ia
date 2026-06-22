@@ -1,0 +1,306 @@
+---
+name: humanizar-texto
+description: Transforma ideias, rascunhos ou textos prontos em escrita mais humana, natural e autoral — menos genérica, menos simétrica, com menos "cara de IA". Use sempre que o usuário pedir para humanizar, reescrever, "deixar mais natural", tirar o "tom de ChatGPT", dar mais voz/autoria a um texto, ou quando pedir para criar do zero qualquer conteúdo (posts de LinkedIn, roteiros, e-mails profissionais, textos para redes sociais, textos institucionais) com escrita mais real e menos robotizada. Acione esta skill mesmo que o usuário não use a palavra "humanizar" — sinais como "isso parece texto de IA", "soa robótico", "deixa mais leve", "escreve como uma pessoa de verdade escreveria" também indicam que ela deve entrar em ação.
+---
+
+# Humanizar texto
+
+## Função
+
+Esta skill transforma ideias, rascunhos ou textos prontos em textos com menos cara de IA: menos padronizados, menos genéricos, menos simétricos e mais próximos da escrita de uma pessoa real.
+
+O usuário pode trazer:
+- uma ideia solta;
+- um pedido para criar um texto do zero;
+- um texto pronto para reescrever, melhorar ou humanizar.
+
+Em todos os casos, entregue um texto final mais natural, claro, específico e com mais voz humana.
+
+## Princípio central
+
+Escreva como um bom editor humano: com intenção, ritmo, contexto e escolha. Evite a escrita excessivamente polida, equilibrada, explicativa e previsível típica de modelos de linguagem.
+
+O texto final deve parecer pensado por uma pessoa real, não montado por uma fórmula.
+
+## Regras obrigatórias
+
+### 1. Evite estruturas muito associadas a textos de IA
+
+Em especial:
+- "não é X, é Y"
+- "não é sobre X, é sobre Y"
+- "não se trata de X, mas de Y"
+- "mais do que X, é Y"
+- "não apenas X, mas também Y"
+
+Use essas estruturas apenas se forem indispensáveis ou se o usuário pedir esse estilo.
+
+### 2. Evite aberturas genéricas
+
+- "Em um mundo cada vez mais digital..."
+- "Na era da inteligência artificial..."
+- "Com o avanço da tecnologia..."
+- "Vivemos um momento de transformação..."
+- "Atualmente, empresas e profissionais..."
+
+Comece de forma mais direta, concreta ou situada.
+
+### 3. Evite conectores previsíveis em excesso
+
+- "Além disso"
+- "Vale destacar"
+- "É importante ressaltar"
+- "Nesse sentido"
+- "Dessa forma"
+- "Portanto"
+- "Em suma"
+
+Use conectores só quando ajudarem. Muitas vezes, a ligação entre as ideias pode vir pelo próprio ritmo do texto.
+
+### 4. Evite vocabulário inflado sem necessidade
+
+Palavras como: potencializar, alavancar, otimizar, impulsionar, transformar, jornada, ecossistema, solução, estratégico, disruptivo, robusto, personalizado, inovador, multifacetado.
+
+Prefira palavras mais simples, precisas e naturais: melhorar, simplificar, acelerar, organizar, vender mais, reduzir retrabalho, tomar decisões melhores, ganhar tempo, cortar etapas, deixar claro, resolver.
+
+### 5. Evite frases simétricas demais
+
+Como:
+- "explica, resume, organiza e transforma"
+- "mais produtividade, mais clareza e mais resultado"
+- "para empresas, profissionais e empreendedores"
+- "rápido, simples e eficiente"
+
+Humanos variam mais o ritmo. Use enumerações apenas quando forem úteis.
+
+### 6. Evite conclusões genéricas
+
+- "O futuro já começou"
+- "A IA é uma poderosa aliada"
+- "Quem souber usar sairá na frente"
+- "A transformação é inevitável"
+- "Cabe a nós aproveitar as oportunidades"
+
+Feche com uma consequência prática, uma imagem concreta, uma ideia mais específica ou uma frase com presença autoral.
+
+## Como humanizar a escrita
+
+Ao criar ou reescrever:
+- varie o tamanho das frases;
+- preserve alguma irregularidade natural;
+- troque abstrações por exemplos concretos;
+- corte explicações óbvias;
+- evite tentar cobrir todos os lados do tema;
+- dê mais ponto de vista ao texto quando o formato permitir;
+- use português brasileiro natural;
+- mantenha o objetivo original do usuário;
+- não invente fatos, dados, experiências ou depoimentos;
+- ajuste o grau de formalidade ao contexto.
+
+Humanizar não significa deixar informal demais. Um e-mail profissional pode ser humano, direto e elegante. Um texto de LinkedIn pode ser autoral sem soar forçado. Um roteiro de Reels pode ser forte sem parecer copy genérica.
+
+## Diagnóstico interno antes de responder
+
+Antes de entregar qualquer texto, revise mentalmente:
+- O texto parece genérico?
+- Tem cara de resposta padrão de ChatGPT?
+- Começa com uma abertura ampla demais?
+- Usa "não é X, é Y" ou variações?
+- Tem conectores demais?
+- Tem palavras infladas sem necessidade?
+- As frases têm sempre o mesmo tamanho?
+- A conclusão está previsível?
+- Falta contexto concreto?
+- Falta voz humana?
+
+Se a resposta for sim para qualquer ponto relevante, reescreva antes de entregar.
+
+## Quando o usuário pedir texto do zero
+
+Crie uma versão final já utilizável.
+
+Não faça muitas perguntas. Quando faltar informação, use bom senso e produza uma primeira versão útil.
+
+Entregue o texto final antes de explicar qualquer coisa.
+
+## Quando o usuário colar um texto
+
+Reescreva mantendo a intenção central, mas reduza:
+- formalidade artificial;
+- clichês de IA;
+- repetições;
+- abstrações vagas;
+- frases simétricas;
+- conectores previsíveis;
+- excesso de polimento;
+- tom genérico.
+
+Se o texto original tiver bons traços humanos, preserve esses traços. Não transforme tudo em uma versão perfeita demais.
+
+## Quando for texto para redes sociais
+
+Prefira ritmo oral, gancho claro e linguagem direta.
+
+Evite começar explicando o tema de forma didática. Entre pelo problema, pela cena, pela tensão ou por uma percepção forte.
+
+Evite fórmulas batidas:
+- "Você sabia que..."
+- "Pouca gente fala sobre..."
+- "A verdade é que..."
+- "O que ninguém te conta..."
+- "Se você ainda não usa..."
+
+Use apenas se realmente funcionar no contexto.
+
+## Quando for texto profissional
+
+Mantenha educação, clareza e objetividade, mas sem burocracia.
+
+Evite:
+- "Venho por meio deste"
+- "Conforme solicitado"
+- "Reitero"
+- "Coloco-me à disposição"
+- "Sem mais"
+- "Agradeço desde já"
+
+Prefira uma comunicação profissional, natural e precisa.
+
+## Limite importante
+
+Não prometa que um texto será indetectável por ferramentas de detecção de IA. Detectores são instáveis, probabilísticos e podem errar.
+
+Se o usuário pedir para enganar um detector, explique que você pode melhorar naturalidade, clareza, estilo e autoria, mas não garantir invisibilidade nem orientar fraude. O foco é qualidade textual, não falsificação de autoria.
+
+## Forma de entrega
+
+Entregue de forma limpa.
+
+Use, quando fizer sentido:
+
+```
+Versão final:
+[texto]
+
+Versão mais direta:
+[texto]
+
+Versão mais emocional:
+[texto]
+```
+
+Não exagere nas variações. Priorize uma versão realmente boa.
+
+---
+
+# Guia de vícios de escrita de IA e alternativas mais humanas
+
+Referência para identificar padrões comuns em textos de IA e substituí-los por uma escrita mais natural, específica e humana.
+
+## 1. Estrutura "não é X, é Y"
+
+Evitar:
+- Não é sobre produtividade, é sobre liberdade.
+- Não é apenas uma ferramenta, é uma mudança de mentalidade.
+- Não se trata de usar IA, mas de transformar a forma de trabalhar.
+
+Preferir:
+- O ponto principal é como isso muda a rotina de trabalho.
+- A ferramenta importa menos do que a decisão que ela permite tomar.
+- Na prática, a IA muda o jeito como a empresa executa, aprende e decide.
+
+## 2. Aberturas genéricas
+
+Evitar:
+- Em um mundo cada vez mais digital...
+- Na era da inteligência artificial...
+- Com o avanço da tecnologia...
+- Vivemos uma grande transformação...
+- Atualmente, empresas buscam soluções inovadoras...
+
+Preferir:
+- Muita gente começou a usar IA, mas ainda usa como se fosse um buscador melhorado.
+- O problema aparece quando a empresa compra ferramenta antes de entender o processo.
+- A maior diferença não está na resposta da IA. Está na qualidade da pergunta que a pessoa consegue fazer.
+
+## 3. Conectores previsíveis
+
+Evitar excesso de: Além disso; Vale destacar; É importante ressaltar; Nesse sentido; Dessa forma; Portanto; Em suma; Por outro lado.
+
+Alternativas: cortar o conector, dividir a frase, deixar a relação entre ideias mais natural, usar transições mais específicas.
+
+Exemplo IA: "Além disso, é importante ressaltar que a IA pode otimizar processos e impulsionar resultados."
+
+Exemplo mais humano: "A IA ajuda mais quando entra em processos repetidos, caros ou lentos. Fora disso, vira só mais uma ferramenta aberta no navegador."
+
+## 4. Vocabulário inflado
+
+Evitar quando não for necessário: potencializar, alavancar, otimizar, impulsionar, transformar, revolucionar, jornada, ecossistema, solução, robusto, disruptivo, estratégico, multifacetado, personalizado, inovador.
+
+Preferir: melhorar, simplificar, acelerar, organizar, vender mais, reduzir retrabalho, tomar decisões melhores, ganhar tempo, cortar etapas, deixar claro, resolver.
+
+Exemplo IA: "Essa solução robusta potencializa a produtividade e impulsiona a transformação digital."
+
+Exemplo mais humano: "Isso reduz etapas manuais e deixa a equipe com mais tempo para decidir o que realmente importa."
+
+## 5. Frases simétricas demais
+
+Evitar:
+- A IA explica, resume, organiza e transforma.
+- Mais clareza, mais produtividade e mais resultado.
+- Para empresários, gestores e profissionais.
+- Rápido, simples e eficiente.
+
+Preferir:
+- A IA pode resumir um documento, mas o ganho real aparece quando ela ajuda a decidir o próximo passo.
+- O resultado melhora quando a pessoa para de pedir "um texto melhor" e começa a dar contexto de verdade.
+- Funciona para quem precisa vender, organizar processos ou produzir melhor com menos equipe.
+
+## 6. Conclusões previsíveis
+
+Evitar:
+- O futuro já começou.
+- A IA é uma poderosa aliada.
+- Quem souber usar sairá na frente.
+- A transformação é inevitável.
+- Cabe a nós aproveitar essa oportunidade.
+
+Preferir:
+- O diferencial vai estar menos em usar IA e mais em saber onde ela realmente entra no processo.
+- A empresa que tratar IA como projeto de gestão tende a ganhar mais do que aquela que tratar como moda.
+- No fim, a pergunta boa é simples: qual tarefa ainda depende de esforço humano sem precisar?
+
+## 7. Formalidade artificial
+
+Evitar: Venho por meio deste; Conforme solicitado; Reitero; Coloco-me à disposição; Sem mais; Agradeço desde já.
+
+Preferir: Segue o material que combinamos; Fico à disposição para ajustar o formato; Obrigada pelo retorno; Podemos adaptar o conteúdo à realidade da empresa; Me avise se fizer sentido avançarmos.
+
+## 8. Texto abstrato demais
+
+Exemplo IA: "A inteligência artificial oferece inúmeras possibilidades para empresas que desejam inovar e se destacar em um mercado cada vez mais competitivo."
+
+Exemplo mais humano: "A IA começa a fazer diferença quando entra em tarefas que hoje consomem tempo da equipe: responder dúvidas repetidas, organizar informações, revisar documentos, criar primeiras versões e cruzar dados que ninguém tem tempo de olhar."
+
+## 9. Didatismo excessivo
+
+Evite explicar demais o óbvio.
+
+Exemplo IA: "A inteligência artificial é uma tecnologia capaz de simular capacidades humanas, como raciocínio, linguagem e tomada de decisão."
+
+Exemplo mais humano: "Para a maioria das empresas, o problema já não é entender o que é IA. É descobrir onde ela entra sem virar mais uma distração."
+
+## 10. Checklist rápido antes da entrega
+
+- Parece texto de IA?
+- Está genérico?
+- Tem abertura ampla demais?
+- Usa "não é X, é Y"?
+- Tem conectores demais?
+- Tem vocabulário inflado?
+- Está perfeito demais?
+- Falta exemplo concreto?
+- Falta opinião ou intenção?
+- A conclusão poderia estar em qualquer outro texto?
+
+Se sim, reescrever.
